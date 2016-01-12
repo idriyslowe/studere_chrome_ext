@@ -184,14 +184,18 @@ function openPage() {
     }
     name = 'screencapture' + name + '-' + Date.now() + '.png';
 
+    // How to get at this url below
     function onwriteend() {
         // open the file that now contains the blob
         window.open('filesystem:chrome-extension://' + chrome.i18n.getMessage('@@extension_id') + '/temporary/' + name);
+
     }
 
     function errorHandler() {
         show('uh-oh');
     }
+
+    $http.post('http://localhost:3000/bookmarks.json', {bookmarks: {bookmarks: "filename goes here"}});
 
     // create a blob for writing to a file
     window.webkitRequestFileSystem(window.TEMPORARY, size, function(fs){

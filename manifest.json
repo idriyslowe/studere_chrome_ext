@@ -7,5 +7,5 @@
     "default_icon": "Attack_style_icon.png",
     "default_popup": "popup.html"
   },
-  "permissions": [ "activeTab" ]
+  "permissions": [ "activeTab", "storage" ]
 }

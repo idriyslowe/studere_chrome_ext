@@ -1,0 +1,11 @@
+{
+  "name": "Studere",
+  "version": "1.0",
+  "manifest_version": 2,
+  "description": "Send this image to a note.",
+  "browser_action": {
+    "default_icon": "Attack_style_icon.png",
+    "default_popup": "popup.html"
+  },
+  "permissions": [ "activeTab" ]
+}

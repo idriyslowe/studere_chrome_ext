@@ -150,11 +150,12 @@ function openPage() {
     var dataURI = screenshot.canvas.toDataURL();
     sendLogMessage(dataURI);
     sendLogMessage(contentURL);
+    studereURL = 'http://localhost:3000/api/bookmarks';
 
     var d = document;
 
     var f = d.createElement('form');
-    f.action = 'http://localhost:3000/api/bookmarks';
+    f.action = studereURL;
     f.method = 'post';
 
     var i = d.createElement('input');
@@ -162,6 +163,12 @@ function openPage() {
     i.name = 'path';
     i.value = contentURL;
     f.appendChild(i);
+
+    // var h = d.createElement('input');
+    // h.type = 'hidden';
+    // h.name = 'screenshot_data';
+    // h.value = dataURI;
+    // f.appendChild(h);
     
     d.body.appendChild(f);
     f.submit();

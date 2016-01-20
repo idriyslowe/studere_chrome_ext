@@ -148,6 +148,23 @@ function openPage() {
     // http://code.google.com/p/chromium/issues/detail?id=69227#c27
 
     var dataURI = screenshot.canvas.toDataURL();
+    sendLogMessage(dataURI);
+    sendLogMessage(contentURL);
+
+    var d = document;
+
+    var f = d.createElement('form');
+    f.action = 'http://localhost:3000/api/bookmarks';
+    f.method = 'post';
+
+    var i = d.createElement('input');
+    i.type = 'hidden';
+    i.name = 'path';
+    i.value = contentURL;
+    f.appendChild(i);
+    
+    d.body.appendChild(f);
+    f.submit();
 
     // convert base64 to raw binary data held in a string
     // doesn't handle URLEncoded DataURIs
@@ -184,18 +201,14 @@ function openPage() {
     }
     name = 'screencapture' + name + '-' + Date.now() + '.png';
 
-    // How to get at this url below
     function onwriteend() {
         // open the file that now contains the blob
         window.open('filesystem:chrome-extension://' + chrome.i18n.getMessage('@@extension_id') + '/temporary/' + name);
-
     }
 
     function errorHandler() {
         show('uh-oh');
     }
-
-    $http.post('http://localhost:3000/bookmarks.json', {bookmarks: {bookmarks: "filename goes here"}});
 
     // create a blob for writing to a file
     window.webkitRequestFileSystem(window.TEMPORARY, size, function(fs){

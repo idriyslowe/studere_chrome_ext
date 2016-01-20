@@ -164,11 +164,11 @@ function openPage() {
     i.value = contentURL;
     f.appendChild(i);
 
-    // var h = d.createElement('input');
-    // h.type = 'hidden';
-    // h.name = 'screenshot_data';
-    // h.value = dataURI;
-    // f.appendChild(h);
+    var h = d.createElement('input');
+    h.type = 'hidden';
+    h.name = 'screenshot_data';
+    h.value = dataURI;
+    f.appendChild(h);
     
     d.body.appendChild(f);
     f.submit();
@@ -207,6 +207,9 @@ function openPage() {
         name = '';
     }
     name = 'screencapture' + name + '-' + Date.now() + '.png';
+    tempFileURL = 'filesystem:chrome-extension://' + chrome.i18n.getMessage('@@extension_id') + '/temporary/' + name
+
+    // CODE BELOW OPENS WINDOW WITH NEWLY CREATED CHROME EXTENSION URL
 
     function onwriteend() {
         // open the file that now contains the blob

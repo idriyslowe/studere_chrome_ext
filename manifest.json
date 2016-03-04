@@ -2,15 +2,13 @@
   "name": "studere_chrome_extension",
   "version": "0.0.15",
   "manifest_version": 2,
-  "description": "Screen capture your current page in entirety and reliably!",
+  "description": "Save a full page screenshot to the Studere app",
   "browser_action": {
-    "default_icon": "icon.png",
+    "default_icon": "bookmark.png",
     "default_popup": "popup.html"
   },
   "permissions": [ "activeTab" ],
+  "identity"
   "icons": {
-    "16": "icon16.png",
-    "48": "icon48.png",
-    "128": "icon128.png"
   }
 }

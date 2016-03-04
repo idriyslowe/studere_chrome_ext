@@ -114,20 +114,7 @@ function capturePage(data, sender, callback) {
         canvas.height = data.totalHeight;
         screenshot.canvas = canvas;
         screenshot.ctx = canvas.getContext('2d');
-
-        // sendLogMessage('TOTALDIMENSIONS: ' + data.totalWidth + ', ' + data.totalHeight);
-
-        // // Scale to account for device pixel ratios greater than one. (On a
-        // // MacBook Pro with Retina display, window.devicePixelRatio = 2.)
-        // if (scale !== 1) {
-        //     // TODO - create option to not scale? It's not clear if it's
-        //     // better to scale down the image or to just draw it twice
-        //     // as large.
-        //     screenshot.ctx.scale(scale, scale);
-        // }
     }
-
-    // sendLogMessage(data);
 
     chrome.tabs.captureVisibleTab(
         null, {format: 'png', quality: 100}, function(dataURI) {
@@ -211,10 +198,10 @@ function openPage() {
 
     // CODE BELOW OPENS WINDOW WITH NEWLY CREATED CHROME EXTENSION URL
 
-    function onwriteend() {
-        // open the file that now contains the blob
-        window.open('filesystem:chrome-extension://' + chrome.i18n.getMessage('@@extension_id') + '/temporary/' + name);
-    }
+    // function onwriteend() {
+    //     // open the file that now contains the blob
+    //     window.open('filesystem:chrome-extension://' + chrome.i18n.getMessage('@@extension_id') + '/temporary/' + name);
+    // }
 
     function errorHandler() {
         show('uh-oh');
